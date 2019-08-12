@@ -29,7 +29,7 @@ export function withDataAccess(WrappedComponent,{defaultCollection,withIds} = {}
 
         get(specificCollection){
             return new Promise((resolve,reject) => {
-                const targetCollection = specificCollection || defaultCollection || noCollectionProvidedError(1,2);
+                const targetCollection = specificCollection || defaultCollection || noCollectionProvidedError();
                 firebase.firestore().collection(targetCollection).get().then(snapshots => {
                     const items = [];
                     snapshots.forEach(snap => items.push(
